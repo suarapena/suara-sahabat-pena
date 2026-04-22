@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lindungi Anak Indonesia</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      color: #1a1a2e;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #185FA5 0%, #993556 100%);
+      color: white;
+      text-align: center;
+      padding: 56px 32px;
+    }
+
+    header h1 {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      font-size: 16px;
+      opacity: 0.85;
+    }
+
+    /* NAV */
+    nav {
+      background: white;
+      border-bottom: 1px solid #e8edf3;
+      padding: 14px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      background: #f0f4f8;
+      color: #185FA5;
+      padding: 6px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid #B5D4F4;
+      transition: all 0.15s;
+    }
+
+    nav a:hover {
+      background: #E6F1FB;
+      border-color: #378ADD;
+    }
+
+    /* LAYOUT */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+
+    section {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 20px;
+      border: 1px solid #e8edf3;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #1a1a2e;
+    }
+
+    .dot-blue {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #378ADD;
+      flex-shrink: 0;
+    }
+
+    .dot-pink {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #D4537E;
+      flex-shrink: 0;
+    }
+
+    .body-text {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #555;
+    }
+
+    /* CARD GRID */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+    }
+
+    .type-card {
+      border-radius: 12px;
+      padding: 18px;
+      border: 1px solid;
+    }
+
+    .type-card.blue  { background: #E6F1FB; border-color: #B5D4F4; }
+    .type-card.pink  { background: #FBEAF0; border-color: #F4C0D1; }
+
+    .type-card b {
+      font-size: 14px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .type-card.blue b { color: #0C447C; }
+    .type-card.pink b { color: #72243E; }
+
+    .type-card p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    /* HIGHLIGHT BOX */
+    .highlight-box {
+      background: linear-gradient(135deg, #E6F1FB, #FBEAF0);
+      border: 1px solid #B5D4F4;
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 18px;
+    }
+
+    .highlight-box p {
+      font-size: 14px;
+      font-weight: 600;
+      color: #185FA5;
+      margin-bottom: 10px;
+    }
+
+    .highlight-box ul {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.9;
+      padding-left: 20px;
+    }
+
+    /* UU */
+    .uu-list {
+      font-size: 14px;
+      color: #555;
+      line-height: 2;
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    .uu-card {
+      background: #f8fafc;
+      border-left: 4px solid #378ADD;
+      padding: 14px 18px;
+      border-radius: 0 10px 10px 0;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    /* CEGAH LIST */
+    .cegah-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .cegah-list li {
+      font-size: 14px;
+      color: #555;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cegah-list li:last-child { border-bottom: none; }
+
+    .check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #185FA5, #993556);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    /* HOTLINE */
+    .hotline {
+      background: linear-gradient(135deg, #185FA5, #993556);
+      border-radius: 12px;
+      padding: 20px 24px;
+      color: white;
+      margin: 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .hotline-num {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .hotline-label {
+      font-size: 13px;
+      opacity: 0.85;
+    }
+
+    /* BUTTONS */
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    button {
+      border: none;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-blue { background: #185FA5; color: white; }
+    .btn-blue:hover { background: #0C447C; }
+
+    .btn-pink { background: #993556; color: white; }
+    .btn-pink:hover { background: #72243E; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #999;
+      padding: 24px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Lindungi Anak Indonesia</h1>
+  <p>Edukasi tentang kekerasan terhadap anak — karena setiap anak berhak tumbuh dengan aman</p>
+</header>
+
+<nav>
+  <a href="#pengertian">Pengertian</a>
+  <a href="#jenis">Jenis Kekerasan</a>
+  <a href="#data">Data</a>
+  <a href="#uu">Undang-Undang</a>
+  <a href="#cegah">Pencegahan</a>
+  <a href="#bantuan">Bantuan</a>
+</nav>
+
+<div class="container">
+
+  <section id="pengertian">
+    <div class="section-title"><div class="dot-blue"></div> Apa itu Kekerasan Anak?</div>
+    <p class="body-text">
+      Kekerasan terhadap anak adalah segala bentuk perlakuan yang menyakiti, merugikan,
+      atau mengancam keselamatan anak — baik secara fisik, emosional, maupun seksual.
+      Ini mencakup tindakan langsung maupun penelantaran yang berdampak pada tumbuh kembang anak.
+    </p>
+  </section>
+
+  <section id="jenis">
+    <div class="section-title"><div class="dot-pink"></div> Jenis Kekerasan</div>
+    <div class="card-grid">
+      <div class="type-card blue">
+        <b>Fisik</b>
+        <p>Memukul, menendang, atau menyakiti tubuh anak secara langsung.</p>
+      </div>
+      <div class="type-card pink">
+        <b>Emosional</b>
+        <p>Menghina, membentak, atau merendahkan martabat anak.</p>
+      </div>
+      <div class="type-card blue">
+        <b>Seksual</b>
+        <p>Pelecehan atau eksploitasi seksual terhadap anak.</p>
+      </div>
+      <div class="type-card pink">
+        <b>Penelantaran</b>
+        <p>Tidak memenuhi kebutuhan dasar: makanan, pendidikan, kasih sayang.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="data">
+    <div class="section-title"><div class="dot-blue"></div> Data Kekerasan Anak di Indonesia</div>
+    <div class="highlight-box">
+      <p>Fakta yang perlu diketahui:</p>
+      <ul>
+        <li>Ribuan kasus kekerasan anak terjadi setiap tahun di Indonesia</li>
+        <li>Banyak kasus tidak pernah dilaporkan kepada pihak berwenang</li>
+        <li>Kekerasan seksual menjadi salah satu kasus dengan angka tertinggi</li>
+      </ul>
+    </div>
+    <button class="btn-blue" onclick="alert('Kekerasan terhadap anak bisa terjadi di mana saja. Jangan diam!')">
+      Lihat Pesan Penting
+    </button>
+  </section>
+
+  <section id="uu">
+    <div class="section-title"><div class="dot-pink"></div> Undang-Undang Perlindungan Anak</div>
+    <ul class="uu-list">
+      <li>UU No. 23 Tahun 2002 tentang Perlindungan Anak</li>
+      <li>UU No. 35 Tahun 2014 (Perubahan UU Perlindungan Anak)</li>
+    </ul>
+    <div class="uu-card">
+      Negara menjamin hak setiap anak untuk hidup, tumbuh, berkembang, serta mendapat
+      perlindungan penuh dari segala bentuk kekerasan dan diskriminasi.
+    </div>
+  </section>
+
+  <section id="cegah">
+    <div class="section-title"><div class="dot-blue"></div> Cara Mencegah Kekerasan</div>
+    <ul class="cegah-list">
+      <li><div class="check">✓</div> Memberikan kasih sayang dan perhatian yang cukup kepada anak</li>
+      <li><div class="check">✓</div> Membangun komunikasi terbuka dan terpercaya dengan anak</li>
+      <li><div class="check">✓</div> Mengawasi lingkungan pergaulan anak secara bijak</li>
+      <li><div class="check">✓</div> Segera melaporkan jika terjadi tanda-tanda kekerasan</li>
+    </ul>
+  </section>
+
+  <section id="bantuan">
+    <div class="section-title"><div class="dot-pink"></div> Butuh Bantuan Segera?</div>
+    <p class="body-text">Jangan diam. Segera hubungi layanan perlindungan anak jika Anda melihat atau mengalami kekerasan.</p>
+    <div class="hotline">
+      <div>
+        <div class="hotline-num">129</div>
+        <div class="hotline-label">Hotline Perlindungan Anak — tersedia 24 jam</div>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button class="btn-pink" onclick="alert('Hubungi: 129 atau layanan perlindungan anak terdekat')">
+        Hubungi Bantuan Sekarang
+      </button>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>© 2026 Edukasi Perlindungan Anak Indonesia</p>
+</footer>
+
+</body>
+</html>
